@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--    开启注解支持-->
+<!--    <context:annotation-config/>-->
+<!--    <context:component-scan base-package="com.yao.pojo"/>-->
+    <bean id="userService" class="com.yao.service.UserServiceImpl"/>
+    <!--<bean id="log" class="com.yao.log.Log"/>-->
+    <bean id="beforeLog" class="com.yao.log.BeforeLog"/>
+    <bean id="afterLog" class="com.yao.log.AfterLog"/>
+
+    <!--aop实现方式1：使用spring自带的api，一个切入方法就需要定义一个类-->
+    <aop:config>
+        <!--定义切入点(被切入的方法，例如addUser方法)-->
+        <aop:pointcut id="pointcut" expression="execution(* com.yao.service.UserServiceImpl.*(..))"/>
+        <!--指定切入方法所在类对象(指定切入进来的方法，例如登记日志，注意切进来的具体位置例如切入点之前/切入点之后/... 在类中定义)-->
+        <!--<aop:advisor advice-ref="log" pointcut-ref="pointcut"/>-->
+        <aop:advisor advice-ref="beforeLog" pointcut-ref="pointcut"/>
+        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"/>
+    </aop:config>
+
+    <!--aop实现方式2：自定义切面类，一个切面类中可包含多个切入方法，见spring-07-aop-aspect -->
+
+</beans>

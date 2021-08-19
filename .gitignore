@@ -1,0 +1,9 @@
+# 项目排除路径
+/spring-01-ioc/target/
+/spring-02-bean/target/
+/spring-03-ioc2/target/
+/spring-04-autowired/target/
+/spring-05-anno/target/
+/spring-06-aop/target/
+/spring-07-aop-aspect/target/
+/spring-08-aop-anno/target/

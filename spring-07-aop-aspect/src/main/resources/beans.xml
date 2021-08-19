@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="logAspect" class="com.yao.aspect.LogAspect"/>
+    <bean id="userService" class="com.yao.service.UserServiceImpl"/>
+
+    <!--aop实现方式2：自定义切面类，一个切面类中可包含多个切入方法-->
+    <aop:config>
+        <aop:aspect ref="logAspect">
+            <aop:pointcut id="pointcut" expression="execution(* com.yao.service.UserServiceImpl.*(..))"/>
+            <aop:before method="before" pointcut-ref="pointcut"/>
+            <aop:after method="after" pointcut-ref="pointcut"/>
+        </aop:aspect>
+    </aop:config>
+
+    <!--aop实现方式3：使用注解实现，见spring-08-aop-anno-->
+
+</beans>
