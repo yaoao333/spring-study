@@ -5,6 +5,9 @@
 
     <properties resource="jdbc.properties"/>
 
+    <typeAliases>
+        <typeAlias type="com.yao.domain.User" alias="user"/>
+    </typeAliases>
     <!--数据源环境-->
     <environments default="development">
         <environment id="development">
