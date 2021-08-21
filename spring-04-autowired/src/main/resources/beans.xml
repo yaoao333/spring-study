@@ -8,15 +8,16 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--    开启注解支持-->
-    <context:annotation-config/>
+    <!--<context:annotation-config/>-->
+    <context:component-scan base-package="com.yao.pojo"/>
 
 
-    <bean id="cat" class="com.yao.pojo.Cat">
+    <!--<bean id="cat" class="com.yao.pojo.Cat">
         <property name="catName" value="tom"/>
     </bean>
     <bean id="dog" class="com.yao.pojo.Dog">
         <property name="dogName" value="jack"/>
-    </bean>
+    </bean>-->
 
     <!--    <bean id="cat" class="com.yao.pojo.Cat"/>-->
     <!--    <bean id="dog" class="com.yao.pojo.Dog"/>-->
@@ -26,7 +27,7 @@
 <!--            <property name="name" value="yaoao"/>-->
 <!--        </bean>-->
 
-    <bean id="person" class="com.yao.pojo.Person">
+    <!-- <bean id="person" class="com.yao.pojo.Person">
         <property name="name" value="yaoao"/>
-    </bean>
+    </bean>-->
 </beans>

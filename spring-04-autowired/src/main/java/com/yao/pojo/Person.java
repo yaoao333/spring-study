@@ -1,12 +1,19 @@
 package com.yao.pojo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component("person")
 public class Person {
+    @Value("yaoao")
     private String name;
     @Autowired
+    @Qualifier("cat")
     private Cat myCat;
     @Autowired
+    @Qualifier("dog")
     private Dog myDog;
 
     public String getName() {
